@@ -6,69 +6,56 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="generator" content="Wix.com Website Builder">
   <link rel="icon" sizes="192x192" href="https://static.wixstatic.com/media/2aad34_c03833053ee64cac9357d04c4ecd3ff1%7Emv2.png" type="image/png">
-  <link rel="shortcut icon" href="https://static.wixstatic.com/media/2aad34_c03833053ee64cac9357d04c4ecd3ff1%7Emv2.png" type="image/png">
-  <link rel="apple-touch-icon" href="https://static.wixstatic.com/media/2aad34_c03833053ee64cac9357d04c4ecd3ff1%7Emv2.png" type="image/png">
-  <script src="https://static.parastorage.com/unpkg/core-js-bundle@3.2.1/minified.js" nomodule></script>
-  <script src="https://static.parastorage.com/unpkg/focus-within-polyfill@5.0.9/dist/focus-within-polyfill.js" nomodule></script>
-  <script src="https://polyfill-fastly.io/v3/polyfill.min.js?features=fetch" nomodule></script>
+  <link rel="shortcut icon" href="https://static.wixstatic.com/media/2aad34_c03833053ee64cac9357d04c4ecd3ff2.png" type="image/png">
+  <link rel="apple-touch-icon" href="https://static.wixstatic.com/media/2aad34_c03833053ee64cac9357d04c4ecd3ff3.png" type="image/png">
+  <!-- Performance Polyfills -->
+  <script src="https://static.parastorage.com/services/polyfills.js" nomodule></script>
+  <!-- Performance API Polyfills -->
   <script>
-    // Polyfill for Performance API
     (function() {
-      var noop = function() {};
-      if (!("performance" in window)) {
-        window.performance = {};
-      }
-      window.performance.mark = performance.mark || noop;
-      window.performance.measure = performance.measure || noop;
-      if (!("now" in window.performance)) {
+      var perf = window.performance = window.performance || {};
+      perf.mark = perf.mark || function() {};
+      perf.measure = perf.measure || function() {};
+      if (!perf.now) {
         var nowOffset = Date.now();
-        if (performance.timing && performance.timing.navigationStart) {
-          nowOffset = performance.timing.navigationStart;
+        if (perf.timing && perf.timing.navigationStart) {
+          nowOffset = perf.timing.navigationStart;
         }
-        window.performance.now = function() {
-          return Date.now() - nowOffset;
-        };
+        perf.now = function() { return Date.now() - nowOffset; };
       }
     })();
   </script>
+  <!-- Globals Definitions -->
   <script>
-    // Globals Definitions
     (function() {
-      var now = Date.now();
       window.initialTimestamps = {
-        initialTimestamp: now,
-        initialRequestTimestamp: Math.round(performance.timeOrigin ? performance.timeOrigin : now - performance.now())
+        initialTimestamp: Date.now(),
+        initialRequestTimestamp: Math.round(performance.timeOrigin || performance.now())
       };
       window.thunderboltTag = "QA_READY";
       window.thunderboltVersion = "1.14118.0";
     })();
   </script>
-  <script>
-    // Performance and caching setup
-    window.fedops = JSON.parse(document.getElementById('wix-fedops').textContent);
-    function sendFedopsLoadStarted() {
-      // Function to handle the start of load
-      var fedopsData = window.fedops.data;
-      // Logic to handle sending fedops load started data
-    }
-    sendFedopsLoadStarted();
-  </script>
+  <!-- Inline CSS -->
   <style>
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 16px;
-      margin: 0;
-      padding: 0;
-    }
-    a {
-      color: blue;
-      text-decoration: none;
-    }
+    body { font-family: Arial, sans-serif; font-size: 14px; margin: 0; padding: 0; }
+    a { color: blue; text-decoration: none; }
+    nav { background: #f0f0f0; padding: 10px 0; text-align: center; }
+    nav a { padding: 10px 15px; }
   </style>
 </head>
 <body>
-  <!-- Content of the webpage -->
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#research">Research</h1>
+    <a href="#team">Team</h1>
+    <a href="#publications">Publications</a>
+    <a href="#news">News</a>
+    <a href="#career">Career</a>
+    <a href="#contact">Contact</a>
+  </Moreploy at one</nav>
+
   <h1>Welcome to Our Website</h1>
-  <p>This is a sample paragraph to demonstrate the normalized HTML structure.</p>
+  <p>This is a sample paragraph to demonstrate the simplified HTML structure.</p>
 </body>
 </html>
